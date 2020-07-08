@@ -128,3 +128,6 @@ if a_i == None:
 if t_i == None:
     print ("The value for t is: %.3f s\n" % t)
 
+      
+      
+#In memory of David Rogers
