@@ -16,6 +16,7 @@
 
 ## To-Do
 * Simplify calculator segment to determine the variables to calculate based off the blank variables rather than the filled ones:
+
 e.g.: `if u == None and v == None:` rather than `if type(u)==float and type(v)==float and type(t)==float:`
 * Perform full testing on every possibility of SUVAT combinations
 * Develop a GUI version of the calculator
