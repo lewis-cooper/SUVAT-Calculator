@@ -1,6 +1,4 @@
-
-import math as math
-import time as time
+import math
 '''
    __  _______ __________     _____   ______  __  ________
   / / / / ___// ____/ __ \   /  _/ | / / __ \/ / / /_  __/
@@ -12,15 +10,16 @@ import time as time
 def user_input() -> float:
     while True:
         try:
-            inpt = input("")
-            return float(inpt)
-        except ValueError:
-            if inpt == (""):
+            inpt = input("")                                #Stores user input in inpt variable
+            return float(inpt)                              #Tries to convert input to a float
+        except ValueError:                                  #Checks if user input fails to convert to a float
+            if inpt == (""):                                #If user input fails to convert to float and is empty the program carries on
                 return print("")
-            else:
+            else:                                           #If user input fails to convert to float and isn't empty then the program asks for a new value
                 print("Input only accepts decimal numbers.")
 
 
+#Storing values for each of the SUVAT variables
 print('please enter a value for s:')
 s = user_input()
 print('please enter a value for u:')
@@ -32,12 +31,12 @@ a = user_input()
 print('please enter a value for t:')
 t = user_input()
 
-s_i = s
-u_i = u
-v_i = v
-a_i = a
-t_i = t
-
+#Result messages
+s_result = 'The value of s is %.3f m'
+u_result = 'The value of u is %.3f m/s'
+v_result = 'The value of v is %.3f m/s'
+a_result = 'The value of a is %.3f m/s^2'
+t_result = 'The value of t is %.3f s'
 '''
    _________    __    ________  ____    ___  __________  ____ 
   / ____/   |  / /   / ____/ / / / /   /   |/_  __/ __ \/ __ \
@@ -48,86 +47,82 @@ t_i = t
 '''
 
 #SUVAT EQUATIONS
-# V=U+AT
-if type(u)==float and type(a)==float and type(t)==float:
-    v=u+a*t
+#When s == None
+if s == None and u == None:
+    u = v - a*t
+    print(u_result % u)
 
-elif type(v)==float and type(a)==float and type(t)==float:
-    u = v - (a*t)
+elif s == None and v == None:
+    v = u + a*t
+    print(v_result % v)
 
-elif type(v)==float and type(u)==float and type(a)==float:
-    t = (v-u)/a
-
-elif type(u)==float and type(v)==float and type(t)==float:
+elif s == None and a == None:
     a = (v-u)/t
+    print(a_result % a)
 
+elif s == None and t == None:
+    t = (v-u)/a
+    print(t_result % t)
 
-#S=UT+1/2AT^2
-if type(u)==float and type(t)==float and type(a)==float:
-    s = u*t + 0.5*a*t**2
-
-elif type(s)==float and type(t)==float and type(a)==float:
-    u=(s/t)-0.5*a*t
-
-elif type(s)==float and type(t)==float and type(u)==float:
-    a = (2(s-t*u))/t**2
-    
-elif type(s)==float and type(u)==float and type(a)==float:
-    t = (math.sqrt(2*a*s+u**2)-u)/a
-
-
-#V^2=U^2+2AS
-if type(u)==float and type(a)==float and type(s)==float:
-    v=math.sqrt(u**2+(2*a*s))
-
-elif type(v)==float and type(u)==float and type(a)==float:
-    s = (v**2 - u **2)/2*a
-    
-elif type(v)==float and type(a)==float and type(s)==float:
-    u=math.sqrt(v**2-2*a*s)
-    
-elif type(v)==float and type(u)==float and type(s)==float:
-    a = (v**2 - u**2)/2*s
-
-#S=(U+V)T/2
-if type(u)==float and type(v)==float and type(t)==float:
+if s == None:
     s=(u+v)*t*0.5
+    print(s_result % s)
 
-elif type(s)==float and type(u)==float and type(v)==float:
-    t= (2*s)/(u+v)
 
-elif type(v)==float and type(t)==float and type(s)==float:
-    u = ((2*s)/t)-v
+#When v == None
+if v == None and u == None:
+    u=(s/t)-0.5*a*t
+    print(u_result % u)
 
-elif type(u)==float and type(t)==float and type(s)==float:
-    v= ((2*s)/t)-u
-
-'''
-    ____  ___________ __  ____  ___________
-   / __ \/ ____/ ___// / / / / /_  __/ ___/
-  / /_/ / __/  \__ \/ / / / /   / /  \__ \ 
- / _, _/ /___ ___/ / /_/ / /___/ /  ___/ / 
-/_/ |_/_____//____/\____/_____/_/  /____/  
-
-'''
-print("Calculating...\n")
-time.sleep(1)
-
-if s_i == None:
-    print ("The value for s is: %.3f m\n" % s)
-
-if u_i == None:
-    print ("The value for u is: %.3f m/s\n" % u)
+elif v == None and a == None:
+    a = (2*(s-t*u))/t**2
+    print(a_result % a)
     
-if v_i == None:
-    print ("The value for v is: %.3f m/s\n" % v)
+elif v == None and t == None:
+    try:
+        t = (math.sqrt(2*a*s+u**2)-u)/a
+        print(t_result % t)
+    except ValueError:
+        print("")
 
-if a_i == None:
-    print ("The value for a is: %.3f m/s^s\n" % a)
+if v == None:
+    try:
+        v = u+a*t
+        print(v_result % v)
+    except TypeError:
+        print("No real roots for v")
 
-if t_i == None:
-    print ("The value for t is: %.3f s\n" % t)
 
-      
-      
+#When a == None
+if a == None and u == None:
+    u = ((2*s)/t)-v
+    print(u_result % u)
+
+elif a == None and t == None:
+    t = (2*s)/(u+v)
+    print(t_result % t)
+
+if a == None:
+    a = (v-u)/t
+    print(a_result % a)
+    
+#When t == None
+if t == None and u == None:
+    try: 
+        u = math.sqrt((v**2)-(2*a*s))
+        print(u_result % u)
+    except ValueError:
+        print("No real roots for u")
+        
+
+if t == None:
+    try:
+        t = (v-u)/a
+        print(t_result % t)
+    except TypeError:
+        print("Can not solve for t")
+  
+    
+    
+    
 #In memory of David Rogers
