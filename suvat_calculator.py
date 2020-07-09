@@ -10,12 +10,12 @@ import math
 def user_input() -> float:
     while True:
         try:
-            inpt = input("")                                #Stores user input in inpt variable
-            return float(inpt)                              #Tries to convert input to a float
-        except ValueError:                                  #Checks if user input fails to convert to a float
-            if inpt == (""):                                #If user input fails to convert to float and is empty the program carries on
+            inpt = input("")                                        #Stores user input in inpt variable
+            return float(inpt)                                      #Tries to convert input to a float
+        except ValueError:                                          #Checks if user input fails to convert to a float
+            if inpt == (""):                                        #If user input fails to convert to float and is empty the program carries on
                 return print("")
-            else:                                           #If user input fails to convert to float and isn't empty then the program asks for a new value
+            else:                                                   #If user input fails to convert to float and isn't empty then the program asks for a new value
                 print("Input only accepts decimal numbers.")
 
 
@@ -80,17 +80,17 @@ elif v == None and a == None:
     
 elif v == None and t == None:
     try:
-        t = (math.sqrt(2*a*s+u**2)-u)/a
-        print(t_result % t)
-    except ValueError:
+        t = (math.sqrt(2*a*s+u**2)-u)/a                             #Checks whether the calculation is possible
+        print(t_result % t)                                         #If calculation is possible, the value is printed
+    except ValueError:                                              #If calculation is impossible, error message is printed
         print("")
 
 if v == None:
-    try:
+    try:                                                            #Checks whether the calculation is possible
         v = u+a*t
-        print(v_result % v)
+        print(v_result % v)                                         #If calculation is possible, the value is printed
     except TypeError:
-        print("No real roots for v")
+        print("No real roots for v")                                #If calculation is impossible, error message is printed
 
 
 #When a == None
@@ -109,20 +109,21 @@ if a == None:
 #When t == None
 if t == None and u == None:
     try: 
-        u = math.sqrt((v**2)-(2*a*s))
-        print(u_result % u)
+        u = math.sqrt((v**2)-(2*a*s))                               #Checks whether the calculation is possible
+        print(u_result % u)                                         #If calculation is possible, the value is printed
     except ValueError:
-        print("No real roots for u")
+        print("No real roots for u")                                #If calculation is impossible, error message is printed
         
 
 if t == None:
-    try:
-        t = (v-u)/a
+    try:                                                            #Checks whether the calculation is possible
+        t = (v-u)/a                                                 #If calculation is possible, the value is printed
         print(t_result % t)
     except TypeError:
-        print("Can not solve for t")
+        print("Can not solve for t")                                #If calculation is impossible, error message is printed
   
     
     
     
 #In memory of David Rogers
+
