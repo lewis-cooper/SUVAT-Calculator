@@ -15,9 +15,15 @@
 * Quick calculations so that maths and physics students can check their workings
 
 ## To-Do
-* Perform full testing on every possibility of SUVAT combinations
-* Develop a GUI version of the calculator
+* ~~Perform full testing on every possibility of SUVAT combinations~~
+* ~~Develop a GUI version of the calculator~~
+* Shorten/ improve efficiency of the code
+* ~~Fix how error messages are displayed and removed from GUI version when user inputs are invalid~~
 
 ## Technologies
 Project is created with:
 * Python version: 3.8
+
+Modules Used:
+* Math
+* Tkinter (GUI version)
