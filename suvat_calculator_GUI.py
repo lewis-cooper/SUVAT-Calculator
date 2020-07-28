@@ -66,60 +66,15 @@ def errorclear():
 
 
 #Storing the values for SUVAT as either a float or a blank
-def s_value():
+def userinput(input):
 	while True:
 		try:
-			return float(s_val.get())
+			return float(input.get())
 		except ValueError:
-			if s_val.get() == "":
+			if input.get() == "":
 				break
 			else:
 				return ValueErrorMsg()
-
-
-def u_value():
-	while True:
-		try:
-			return float(u_val.get())
-		except ValueError:
-			if u_val.get() == "":
-				break
-			else:
-				return ValueErrorMsg()
-
-
-def v_value():
-	while True:
-		try:
-			return float(v_val.get())
-		except ValueError:
-			if v_val.get() == "":
-				break
-			else:
-				return ValueErrorMsg()
-
-
-def a_value():
-	while True:
-		try:
-			return float(a_val.get())
-		except ValueError:
-			if a_val.get() == "":
-				break
-			else:
-				return ValueErrorMsg()
-
-
-def t_value():
-	while True:
-		try:
-			return float(t_val.get())
-		except ValueError:
-			if t_val.get() == "":
-				break
-			else:
-				return ValueErrorMsg()
-
 
 
 '''
@@ -217,11 +172,11 @@ def calculate():
         global a
         global t
 
-        s = s_value()
-        u = u_value()
-        v = v_value()
-        a = a_value()
-        t = t_value()
+        s = userinput(s_val)
+        u = userinput(u_val)
+        v = userinput(v_val)
+        a = userinput(a_val)
+        t = userinput(t_val)
 
         if s == None and u == None and v == None:
             return InputErrorMessage()
